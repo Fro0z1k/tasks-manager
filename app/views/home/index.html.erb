@@ -7,7 +7,7 @@
             <img alt="Logo" class="logo" src="img/logo-square-light.png">
           </a> -->
           <ul class="social-links">
-            <a href="#">Sign in<i class=""></i></a>
+            <%= link_to 'Sign In', new_user_session_path %>
           </ul>
         </div>
       </div><!--end of row-->
@@ -31,7 +31,11 @@
         <h1 class="text-white">Tasks Manager</h1>
         <p class="text-white super-lead">You make many projects?</p>
         <p class="text-white super-lead">You want controlling your tasks?</p>
-        <p class="text-white super-lead">You want deadline for your tasks and marking a tasks as 'done'?</p>
+        <p class="text-white super-lead">You want have deadline for your tasks and marking a tasks as 'done'?</p>
+      </div>
+      <div class="col-sm-12 text-center">
+        <br />
+        <%= link_to 'Registration', new_user_registration_path, class: "btn" %>
       </div>
     </div><!--end of row-->
   </div><!--end of container-->
