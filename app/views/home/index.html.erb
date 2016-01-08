@@ -17,7 +17,7 @@
         <div class="col-sm-12 text-center">
           <br />
           <% if current_user.present? %>
-            <%= link_to 'Time to work', new_user_registration_path, class: "btn" %>
+            <%= link_to 'Time to work', dashboard_index_path, class: "btn" %>
           <% else %>
             <%= link_to 'Sign up', new_user_registration_path, class: "btn" %>
             <%= link_to 'Log In', new_user_session_path, class: 'btn' %>
