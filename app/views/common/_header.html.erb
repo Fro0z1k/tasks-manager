@@ -1,0 +1,21 @@
+<div class="nav-container">
+  <nav class="nav-1">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <a href="/" class="home-link">Welcome!</a>
+          <ul class="social-links">
+            <% if current_user %>
+              <%= current_user.email %>
+              <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
+            <% end %>
+          </ul>
+        </div>
+      </div><!--end of row-->
+    </div><!--end of container-->
+    <div class="mobile-toggle">
+      <div class="bar-1"></div>
+      <div class="bar-2"></div>
+    </div>
+  </nav>
+</div>

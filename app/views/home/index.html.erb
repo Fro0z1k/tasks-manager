@@ -1,23 +1,4 @@
-<div class="nav-container">
-  <nav class="nav-1">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          <!-- <a href="/" class="home-link">
-            <img alt="Logo" class="logo" src="img/logo-square-light.png">
-          </a> -->
-          <ul class="social-links">
-            <%= link_to 'Log In', new_user_session_path %>
-          </ul>
-        </div>
-      </div><!--end of row-->
-    </div><!--end of container-->
-    <div class="mobile-toggle">
-      <div class="bar-1"></div>
-      <div class="bar-2"></div>
-    </div>
-  </nav>
-</div>
+<%= render 'common/header' %>
 
 <div class="main-container">
   <section class="signup-divider overlay">
@@ -35,7 +16,12 @@
         </div>
         <div class="col-sm-12 text-center">
           <br />
-          <%= link_to 'Registration', new_user_registration_path, class: "btn" %>
+          <% if current_user.present? %>
+            <%= link_to 'Time to work', new_user_registration_path, class: "btn" %>
+          <% else %>
+            <%= link_to 'Sign up', new_user_registration_path, class: "btn" %>
+            <%= link_to 'Log In', new_user_session_path, class: 'btn' %>
+          <% end %>
         </div>
       </div><!--end of row-->
     </div><!--end of container-->
