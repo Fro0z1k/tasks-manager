@@ -17,6 +17,8 @@
           <%= f.password_field :password_confirmation, autocomplete: "off", class: "validate-required", type: "text", name: "user[password_confirmation]", placeholder: "New Password Confirmation" %>
           <%= f.submit "Change my password", class: "btn", type: "submit" %>
         <% end %>
+        <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-sm" %>
+        <%= link_to 'Log In', new_user_session_path, class: 'btn btn-sm' %>
       </div>
     </div><!--end of container-->
   </section>
