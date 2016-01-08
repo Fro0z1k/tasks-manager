@@ -1,16 +1,21 @@
-<h2>Forgot your password?</h2>
+<%= render 'common/header' %>
+<div class="main-container">
+  <section class="signup-divider overlay">
+    <div class="background-image-holder parallax-background overlay">
+      <%= image_tag('body1.jpg') %>
+    </div>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+    <div class="container">
+      <div class="col-sm-10 col-sm-offset-1 text-center">
+        <span class="text-white"><%= devise_error_messages! %></span>
+        <h1 class="text-white">Forgot your password?</h1>
+      </div>
+      <div class="col-sm-4 col-sm-offset-4 text-center">
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+          <%= f.email_field :email, autofocus: true, class: "validate-required", type: "text", name: "user[email]", placeholder: "Your Email" %>
+          <%= f.submit "Send me reset password instructions", class: "btn", type: "submit" %>
+        <% end %>
+      </div>
+    </div><!--end of container-->
+  </section>
+</div>
