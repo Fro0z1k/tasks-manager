@@ -7,11 +7,15 @@
       <h1 class='text-center'>Projects</h1>
       <!--end of row-->
       <div class="row">
-        <% @projects.each do |project| %>
-          <div class="col-md-4 col-sm-6 project" data-filter="web">
-            <h2><%= link_to "#{ project.name }", project %></h2>
-            <span><%= "#{ project.description }" %></span>
-          </div><!--end of project-->
+        <% if @projects.present? %>
+          <% @projects.each do |project| %>
+            <div class="col-md-4 col-sm-6 project" data-filter="web">
+              <h2><%= link_to "#{ project.name }", project, remote: true %><a id="rm-project"><i class="icon social_dribbble"></i></a></h2>
+              <span><%= "#{ project.description }" %></span>
+            </div><!--end of project-->
+          <% end %>
+        <% else %>
+          <h5 class='text-center'><%= 'Are no projects' %></h5>
         <% end %>
       </div><!--end of row-->
     </div><!--end of container-->

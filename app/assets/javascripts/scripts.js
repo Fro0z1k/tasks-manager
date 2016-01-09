@@ -136,10 +136,6 @@ $(document).ready(function(){
 		$(this).closest('form').find('input[type="text"]').val(newVal);
 	});
 
-    if (!(/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.userAgent || navigator.vendor || window.opera)) {
-        skrollr.init({
-            forceHeight: false
-        });
 
         // Fixed header scrolling
 
@@ -161,7 +157,6 @@ $(document).ready(function(){
 				$(this).find('.layer-2').css('transform', 'translate(' + -event.pageX /20 + 'px,' + -event.pageY /20+ 'px)');
 			});
 		});
-    }
 
     $('.promo-1 .btn').mouseenter(function(){
     	$(this).closest('.promo-1').find('.promo-image-holder').css('transform', 'scale(1.05)');
@@ -267,10 +262,7 @@ $(document).ready(function(){
 
     // Instagram Feed
 
-    jQuery.fn.spectragram.accessData = {
-        accessToken: '1406933036.fedaafa.feec3d50f5194ce5b705a1f11a107e0b',
-        clientID: 'fedaafacf224447e8aef74872d3820a1'
-    };
+
 
     $('.instafeed').each(function() {
         $(this).children('ul').spectragram('getUserFeed', {

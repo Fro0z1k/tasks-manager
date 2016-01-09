@@ -10,28 +10,18 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
+ *= require bootstrap
+ *= require elegant-icons.min
+ *= require flexslider.min
+ *= require lightbox.min
+ *= require pe-icon-7-stroke.min
+ *= require theme-ketchup
+ *= require font-cardo
+ *= require font-helvetica
+ *= require font-lato
+ *= require font-libre
+ *= require font-opensans
+ *= require font-roboto
+ *= require font-titillium
  *= require_self
  */
-
-
-$error_color: #a94442;
-
-.has-error.control-group {
-  color: $error_color;
-
-  input {
-    border-color: $error_color;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-    border-width: 1px;
-  }
-
-  .list-unstyled {
-    color: $error_color;
-    padding-left: 0;
-    list-style: none;
-    margin-left: 0;
-  }
-
-}

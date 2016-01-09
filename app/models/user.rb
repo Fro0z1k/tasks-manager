@@ -3,5 +3,5 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :projects, foreign_key: :owner, class_name: Project
+  has_many :projects, foreign_key: :owner, class_name: Project, dependent: :destroy
 end

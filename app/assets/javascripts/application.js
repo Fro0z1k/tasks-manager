@@ -12,5 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
-//= require_tree .
+//= require jquery.plugin.min
+//= require jquery.min
+//= require bootstrap.min
+//= require scripts
+//= require flexslider.min
+//= require smooth-scroll.min
+//= require confirm
+//= require data-confirm-modal
