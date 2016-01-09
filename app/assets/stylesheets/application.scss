@@ -13,3 +13,25 @@
  *= require_tree .
  *= require_self
  */
+
+
+$error_color: #a94442;
+
+.has-error.control-group {
+  color: $error_color;
+
+  input {
+    border-color: $error_color;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    border-width: 1px;
+  }
+
+  .list-unstyled {
+    color: $error_color;
+    padding-left: 0;
+    list-style: none;
+    margin-left: 0;
+  }
+
+}
