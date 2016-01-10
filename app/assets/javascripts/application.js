@@ -13,10 +13,18 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.plugin.min
-//= require jquery.min
-//= require bootstrap.min
 //= require scripts
-//= require flexslider.min
-//= require smooth-scroll.min
-//= require confirm
 //= require data-confirm-modal
+//= require flexslider.min
+//= require confirm
+//= require_tree
+
+
+  dataConfirmModal.setDefaults({
+    commitClass: 'btn-sm',
+    cancelClass: 'btn-sm',
+    title: 'Confirm your action',
+    commit: 'Do It',
+    focus: 'commit',
+    cancel: 'Never'
+  });

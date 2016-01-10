@@ -2,12 +2,11 @@
   <section class="contained-projects">
     <div class="col-sm-8 col-sm-offset-2">
       <h3 class='text-center'>New Project</h3>
-      <%= form_for :project, url: project_index_path, html: { role: 'form', "data-toggle" => "validator" } do |p| %>
+      <%= form_for @project do |p| %>
         <div class="form-md-line-input">
           <div class="form-group">
-            <%= hidden_field_tag 'project[owner]', @owner.id %>
-            <%= p.text_field :name, class: "form-control", placeholder: "Enter project name", "data-error"=>"Must not be empty", required: true %>
-            <%= p.text_area :description, class: "form-control", placeholder: "Enter project description", rows: '6', "data-error"=>"Must not be empty", required: true %>
+            <%= p.text_field :name, class: "form-control", placeholder: "Enter project name", required: true %>
+            <%= p.text_area :description, class: "form-control", placeholder: "Enter project description", rows: '6', required: true %>
           </div>
           <div class="col-sm-1 col-sm-offset-3 form-group">
             <%= p.submit "Create", class: "btn btn-default", type: "submit" %>

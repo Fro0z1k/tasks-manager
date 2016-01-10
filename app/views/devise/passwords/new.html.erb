@@ -13,8 +13,10 @@
       <div class="col-sm-4 col-sm-offset-4 text-center">
         <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
           <%= f.email_field :email, autofocus: true, class: "validate-required", type: "text", name: "user[email]", placeholder: "Your Email" %>
-          <%= f.submit "Send me reset password instructions", class: "btn", type: "submit" %>
+          <%= f.submit "Send me reset password instructions", class: "btn btn-default", type: "submit" %>
         <% end %>
+        <%= link_to 'Log In', new_user_session_path, class: 'btn btn-sm' %>
+        <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-sm' %>
       </div>
     </div><!--end of container-->
   </section>
