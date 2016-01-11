@@ -24,7 +24,11 @@
           </div>
         <% end %>
         <div class="col-sm-offset-3 text-center form-group">
-          <%= link_to "Cansel", dashboard_index_path, class: "btn btn-default" %>
+          <% if request[:action] == 'new' %>
+            <%= link_to "Cansel", dashboard_index_path, class: "btn btn-default" %>
+          <% else request[:action] == 'edit' %>
+            <%= link_to "Cansel", @project, class: "btn btn-default", remote: true %>
+          <% end %>
         </div>
       </div>
     </section>
