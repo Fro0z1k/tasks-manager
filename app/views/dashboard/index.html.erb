@@ -2,8 +2,8 @@
   <%= render 'common/header' %>
   <div class="main-container" id='main-projects'>
     <section class="page-header short">
-      <div class="background-image-holder">
-        <%= image_tag('project.jpg', alt: "Slide Background", class: "background-image") %>
+      <div class="background-image-holder overlay">
+        <%= image_tag('body1.jpg', alt: "Slide Background", class: "background-image") %>
       </div>
       <div class="container">
         <div class="row">
@@ -26,7 +26,7 @@
               </div>
             <% end %>
           <% else %>
-            <h5 class='text-center'><%= 'Are no projects' %></h5>
+            <h5 class='text-center'><%= 'Create your first project' %></h5>
           <% end %>
         </div>
       </div>
