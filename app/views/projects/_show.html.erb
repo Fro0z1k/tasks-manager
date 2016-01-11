@@ -1,10 +1,54 @@
-<div class="main-container">
-
-  <section class="contained-projects">
-    <%= link_to "Back to Dashboard", dashboard_index_path, class: "btn btn-default" %>
-    <div class="col-sm-8 col-sm-offset-2">
-      <h3 ><%= "#{ @project.name }" %></h3>
-      <%= "#{ @project.description }" %>
+<div id="all">
+  <%= render 'common/header' %>
+  <div class="main-container">
+    <section class="contained-projects">
+      <div class="col-sm-8 col-sm-offset-2">
+        <h3 ><%= "#{ @project.name }" %></h3>
+        <%= "#{ @project.description }" %>
+      </div>
+    </section>
+    <div class="container">
+      <div class="row">
+        <div class="product-container">
+          <hr>
+          <div class="col-md-4 col-sm-6 text-center">
+            <h3 class="text-center">New tasks</h3>
+            <div class="product">
+              <h5>WooThemes Poster</h5><br>
+              <div style="color:red"><%= 'Global priority' %><br></div>
+              <span>Available in all sizdasdsadasdasdasdasdsad dsad dsa d dasd d asd add sad dsads d dsa asd ades</span>
+            </div>
+            <div class="product">
+              <h5>WooThemes Poster</h5><br>
+              <span>Available in all sizes</span>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 text-center">
+            <h3 class="text-center">Progress</h3>
+            <div class="product">
+              <h5>WooThemes Poster</h5><br>
+              <div style="color:orange"><%= 'Middle priority' %><br></div>
+              <span>Available in all siBoth of those methods are helpers to create an HTML input tag of type "hidden", and yes, those are used to add parameters to a request (typically a form POST). Really the parameter can be any piece of information you want to send along with a request. Be careful, though, as hidden fields are easily tampered with.zes</span>
+            </div>
+            <div class="product">
+              <h5>WooThemes Poster</h5><br>
+              <span>Available in all sizes</span>
+            </div>
+            <div class="product">
+              <h5>WooThemes Poster</h5><br>
+              <div style="color:green"><%= 'Low priority' %><br></div>
+              <span>Available in all sizes</span>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 text-center">
+            <h3 class="text-center">Done</h3>
+            <div class="product">
+              <h5>WooThemes Poster</h5><br>
+              <span>Available in all sizes</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </section>
+  </div>
 </div>

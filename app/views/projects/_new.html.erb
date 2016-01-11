@@ -1,25 +1,32 @@
-<div class="main-container">
-  <section class="contained-projects">
-    <div class="col-sm-8 col-sm-offset-2">
-      <% if request[:action] == 'edit' %>
-        <h3 class='text-center'>Edit Project</h3>
-      <% else %>
-        <h3 class='text-center'>New Project</h3>
-      <% end %>
-      <%= form_for @project do |p| %>
-        <div class="form-md-line-input">
-          <div class="form-group">
-            <%= p.text_field :name, class: "form-control", placeholder: "Enter project name", required: true %>
-            <%= p.text_area :description, class: "form-control", placeholder: "Enter project description", rows: '6', required: true %>
+<div id="all">
+  <%= render 'common/header' %>
+  <div class="main-container">
+    <section class="contained-projects">
+      <div class="col-sm-8 col-sm-offset-2">
+        <% if request[:action] == 'edit' %>
+          <h3 class='text-center'>Edit Project</h3>
+        <% else %>
+          <h3 class='text-center'>New Project</h3>
+        <% end %>
+        <%= form_for(@project, remote: true) do |p| %>
+          <div class="form-md-line-input">
+            <div class="form-group">
+              <%= p.text_field :name, class: "form-control", placeholder: "Enter project name", required: true %>
+              <%= p.text_area :description, class: "form-control", placeholder: "Enter project description", rows: '6', required: true %>
+            </div>
+            <div class="col-sm-1 col-sm-offset-3 form-group">
+              <% if request[:action] == 'new' %>
+                <%= p.submit "Create", class: "btn btn-default", type: "submit" %>
+              <% else request[:action] == 'edit' %>
+                <%= p.submit "Update", class: "btn btn-default", type: "submit" %>
+              <% end %>
+            </div>
           </div>
-          <div class="col-sm-1 col-sm-offset-3 form-group">
-            <%= p.submit "Create", class: "btn btn-default", type: "submit" %>
-          </div>
+        <% end %>
+        <div class="col-sm-offset-3 text-center form-group">
+          <%= link_to "Cansel", dashboard_index_path, class: "btn btn-default" %>
         </div>
-      <% end %>
-      <div class="col-sm-offset-3 text-center form-group">
-        <%= link_to "Cansel", dashboard_index_path, class: "btn btn-default" %>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </div>

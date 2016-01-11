@@ -1,16 +1,21 @@
 class ProjectsController < ApplicationController
+  respond_to :html, :xml
+
   def new
     @project = Project.new
   end
 
   def create
-    project = current_user.projects.build(project_params)
-    if project.save
-      flash[:notice] = "Project successfully created"
-      redirect_to dashboard_index_path
-    else
-      flash[:error] = "What's wrong?"
-      render :back
+    @project = current_user.projects.build(project_params)
+    respond_to do |format|
+      if @project.save
+        flash[:notice] = "Project successfully updated"
+        format.html { redirect_to dashboard_index_path }
+        format.js   { render :show }
+      else
+        flash[:error] = "What's wrong?"
+        render :back
+      end
     end
   end
 
@@ -24,21 +29,23 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    project = Project.find(params[:id])
-    project.update(project_params)
-    if project.save
-      flash[:notice] = "Project successfully updated"
-      redirect_to dashboard_index_path
-    else
-      flash[:error] = "What's wrong?"
-      render :back
+    @project = Project.find(params[:id])
+    respond_to do |format|
+      if @project.update(project_params)
+        flash[:notice] = "Project successfully updated"
+        format.html { redirect_to dashboard_index_path }
+        format.js   { render :show }
+      else
+        flash[:error] = "What's wrong?"
+        render :back
+      end
     end
   end
 
   def destroy
-    project = Project.find(params[:id])
-    project.delete
-    flash[:notice] = "Removed #{ project.name }"
+    @project = Project.find(params[:id])
+    @project.delete
+    flash[:notice] = "#{ @project.name } is was removed!"
     redirect_to dashboard_index_path
   end
 
