@@ -21,8 +21,8 @@
 
 
   dataConfirmModal.setDefaults({
-    commitClass: 'btn-sm',
-    cancelClass: 'btn-sm',
+    commitClass: 'btn btn-sm',
+    cancelClass: 'btn btn-sm',
     title: 'Confirm your action',
     commit: 'Do It',
     focus: 'commit',
