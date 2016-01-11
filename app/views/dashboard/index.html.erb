@@ -1,25 +1,40 @@
 <%= render 'common/header' %>
-
 <div class="main-container" id='main-projects'>
-  <section class="contained-projects">
+  <section class="page-header short">
+    <div class="background-image-holder">
+      <%= image_tag('project.jpg', alt: "Slide Background", class: "background-image") %>
+    </div>
     <div class="container">
-      <%= link_to 'new Project', new_project_path, remote: true, class: 'btn btn-sm', id: 'new-project' %>
-      <h1 class='text-center'>Projects</h1>
-      <!--end of row-->
+      <div class="row">
+        <div class="col-sm-12">
+          <h1 class='text-center'>Projects</h1>
+          <%= link_to 'new Project', new_project_path, remote: true, class: 'btn btn-sm', id: 'new-project' %>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="products-1">
+    <div class="container">
       <div class="row">
         <% if @projects.present? %>
-          <% @projects.each do |project| %>
-            <div class="col-md-4 col-sm-6 project" data-filter="web">
-              <h2><%= link_to "#{ project.name }", project, remote: true %></h2>
-              <span><%= "#{ project.description }" %></span>
-              <%= link_to('Edit', edit_project_path(project), remote: true) %><%=' | '%>
-              <%= link_to('Remove', project_path(project), method: :delete, data: { confirm: "Are you sure you want to delete '#{project.name}'?" }) %>
-            </div>
+          <% @projects.in_groups_of(3, false) do |projects| %>
+            <% projects.each do |project| %>
+              <div class="col-md-4 col-sm-6">
+                <div class="product">
+                  <h5><%= link_to "#{ project.name }", project, remote: true %></h5><br>
+                  <%= truncate("#{ project.description }", length: 100) %>
+                </div>
+                <%= link_to('Edit', edit_project_path(project), remote: true, class: "btn btn-sm") %>
+                <%= link_to('Remove', project_path(project), method: :delete, data: { confirm: "Are you sure you want to delete '#{project.name}'?" }, class: "btn btn-sm") %>
+                <div class="upper-meta">
+                </div>
+              </div>
+            <% end %>
           <% end %>
         <% else %>
           <h5 class='text-center'><%= 'Are no projects' %></h5>
         <% end %>
-      </div><!--end of row-->
-    </div><!--end of container-->
+      </div>
+    </div>
   </section>
 </div>
