@@ -13,8 +13,9 @@
           <hr>
           <div class="col-md-4 col-sm-6 text-center">
             <h3 class="text-center">New tasks</h3>
+            <% @project.tasks.each do |task| %>
             <div class="product">
-              <h5>WooThemes Poster</h5><br>
+              <h5><%= "#{ task.name }" %></h5><br>
               <div style="color:red"><%= 'Global priority' %><br></div>
               <span>Available in all sizdasdsadasdasdasdasdsad dsad dsa d dasd d asd add sad dsads d dsa asd ades</span>
             </div>
