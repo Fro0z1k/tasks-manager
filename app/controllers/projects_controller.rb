@@ -26,10 +26,16 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @tasks_new = @project.tasks.task_new.order(priority: 'DESC')
+    @progress = @project.tasks.progress.order(priority: 'DESC')
+    @done = @project.tasks.done.order(priority: 'DESC')
   end
 
   def update
     @project = Project.find(params[:id])
+    @tasks_new = @project.tasks.task_new.order(priority: 'DESC')
+    @progress = @project.tasks.progress.order(priority: 'DESC')
+    @done = @project.tasks.done.order(priority: 'DESC')
     respond_to do |format|
       if @project.update(project_params)
         flash[:notice] = "Project successfully updated"
