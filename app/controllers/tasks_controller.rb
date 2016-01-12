@@ -14,7 +14,7 @@ class TasksController < ApplicationController
     if @task.save
       @tasks_new = @project.tasks.task_new.order(priority: 'DESC')
       @progress = @project.tasks.progress.order(priority: 'DESC')
-      @done = @project.tasks.done.order(priority: 'DESC')
+      @done = @project.tasks.done
       flash[:notice] = "Project successfully created"
       render 'projects/show'
     else
@@ -64,7 +64,7 @@ class TasksController < ApplicationController
   def get_collections
     @tasks_new = @project.tasks.task_new.order(priority: 'DESC')
     @progress = @project.tasks.progress.order(priority: 'DESC')
-    @done = @project.tasks.done.order(priority: 'DESC')
+    @done = @project.tasks.done
   end
 
   private

@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
 
+
+# Factory
+gem 'factory_girl_rails'
+# Faker
+gem 'faker'
 # Date Picker
 gem 'bootstrap-datepicker-rails'
 # Confirm
