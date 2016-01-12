@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   respond_to :html, :xml
   before_action :get_resources, only: [:show, :edit, :update, :destroy, :get_task, :done_task]
+  before_action :get_collections, only: [:destroy, :get_task, :done_task]
 
   def new
     @project = Project.find(params[:project_id])
@@ -40,26 +41,17 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @tasks_new = @project.tasks.task_new.order(priority: 'DESC')
-    @progress = @project.tasks.progress.order(priority: 'DESC')
-    @done = @project.tasks.done.order(priority: 'DESC')
     @task.destroy
     flash[:notice] = "#{ @task.name } is was removed!"
     render 'projects/show'
   end
 
   def get_task
-    @tasks_new = @project.tasks.task_new.order(priority: 'DESC')
-    @progress = @project.tasks.progress.order(priority: 'DESC')
-    @done = @project.tasks.done.order(priority: 'DESC')
     @task.to_work
     render 'projects/show'
   end
 
   def done_task
-    @tasks_new = @project.tasks.task_new.order(priority: 'DESC')
-    @progress = @project.tasks.progress.order(priority: 'DESC')
-    @done = @project.tasks.done.order(priority: 'DESC')
     @task.to_done
     render 'projects/show'
   end
@@ -67,6 +59,12 @@ class TasksController < ApplicationController
   def get_resources
     @project = Project.find(params[:project_id])
     @task = Task.find(params[:id])
+  end
+
+  def get_collections
+    @tasks_new = @project.tasks.task_new.order(priority: 'DESC')
+    @progress = @project.tasks.progress.order(priority: 'DESC')
+    @done = @project.tasks.done.order(priority: 'DESC')
   end
 
   private
