@@ -2,9 +2,13 @@ Rails.application.routes.draw do
   devise_for :users
   resources :dashboard, only: :index
   resources :projects do
-    resources :tasks
+    resources :tasks do
+      get 'get_task', on: :member
+      get 'done_task', on: :member
+    end
   end
   root 'home#index'
+  # get '/get_task/', to: 'tasks#get_task', as: 'get_task'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

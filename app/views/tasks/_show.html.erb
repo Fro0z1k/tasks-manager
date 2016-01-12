@@ -17,5 +17,17 @@
         <span><%= "#{ @task.text }" %></span>
       </div>
     </section>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2 text-center">
+          <br>
+          <% if @task.status == 'new' || @task.status == 'done' %>
+            <%= link_to 'Get Task to work', get_task_project_task_path(@project, @task), class: 'bnt btn-sm', remote: true %>
+          <% else %>
+            <%= link_to 'Done', done_task_project_task_path(@project, @task), class: 'bnt btn-sm', remote: true %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

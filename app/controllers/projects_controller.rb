@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   respond_to :html, :xml
+  before_action :get_resource, only: [:edit, :show, :update, :destroy]
 
   def new
     @project = Project.new
@@ -20,19 +21,16 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @project = Project.find(params[:id])
     render 'new'
   end
 
   def show
-    @project = Project.find(params[:id])
     @tasks_new = @project.tasks.task_new.order(priority: 'DESC')
     @progress = @project.tasks.progress.order(priority: 'DESC')
     @done = @project.tasks.done.order(priority: 'DESC')
   end
 
   def update
-    @project = Project.find(params[:id])
     @tasks_new = @project.tasks.task_new.order(priority: 'DESC')
     @progress = @project.tasks.progress.order(priority: 'DESC')
     @done = @project.tasks.done.order(priority: 'DESC')
@@ -49,10 +47,13 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project = Project.find(params[:id])
     @project.delete
     flash[:notice] = "#{ @project.name } is was removed!"
     redirect_to dashboard_index_path
+  end
+
+  def get_resource
+    @project = Project.find(params[:id])
   end
 
   private

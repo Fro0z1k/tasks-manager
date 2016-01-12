@@ -9,4 +9,12 @@ class Task < ActiveRecord::Base
   scope :done,        -> { where(status: 'done') }
 
   enum priority: [ :low, :middle, :warning ]
+
+  def to_work
+    update_attribute(:status, 'progress')
+  end
+
+  def to_done
+    update_attribute(:status, 'done')
+  end
 end

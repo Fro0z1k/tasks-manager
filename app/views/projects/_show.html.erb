@@ -39,7 +39,7 @@
             <% if @progress.present? %>
               <% @progress.each do |task| %>
                 <div class="product">
-                  <h5><%= "#{ task.name }" %></h5><br>
+                  <h5><%= link_to "#{ task.name }", project_task_path(task, project_id: @project), remote: true %></h5><br>
                   <% if task.priority == 'low' %>
                     <div style="color:green">
                   <% elsif task.priority == 'middle' %>
@@ -62,7 +62,7 @@
             <% if @done.present? %>
               <% @done.each do |task| %>
                 <div class="product">
-                  <h5><%= "#{ task.name }" %></h5><br>
+                  <h5><%= link_to "#{ task.name }", project_task_path(task, project_id: @project), remote: true %></h5><br>
                   <% if task.priority == 'low' %>
                     <div style="color:green">
                   <% elsif task.priority == 'middle' %>
