@@ -27,9 +27,9 @@
                     <%= "#{ task.priority } priority" %><br>
                   </div>
                   <% if task.deadline.present? %>
-                    <ul><%= "Deadline: #{ task.deadline }" %></ul>
+                    <span><%= "Deadline: #{ task.deadline }" %></span>
                   <% end %>
-                  <span><%= "#{ task.text }" %></span>
+                  <ul><%= "#{ task.text }" %></ul>
                 </div>
               <% end %>
             <% end %>
