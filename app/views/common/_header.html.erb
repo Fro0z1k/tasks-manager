@@ -11,10 +11,40 @@
               <li><%= link_to "Dashboard", dashboard_index_path %></li>
               <% if request[:controller] == 'dashboard' %>
                 <li><%= link_to 'create Project', new_project_path, remote: true %></li>
-              <% elsif request[:controller] == 'projects' && request[:action] == 'show' || request[:action] == 'create' || request[:action] == 'update' %>
+              <% elsif request[:controller] == 'projects' && request[:action] == 'show' %>
                 <li><%= link_to "Edit: '#{ @project.name }'", edit_project_path(@project), remote: true  %></li>
                 <li><%= link_to "Remove: '#{ @project.name }'", project_path(@project), method: :delete,
-                                            data: { confirm: "Are you sure you want to delete '#{@project.name}'?" } %></li>
+                                            data: { confirm: "Are you sure you want to delete PROJECT: '#{@project.name}'?" } %></li>
+                <li><%= link_to "New Task", new_project_task_path(@project), remote: true  %></li>
+              <% elsif request[:controller] == 'projects' && request[:action] == 'create' %>
+                <li><%= link_to "Edit: '#{ @project.name }'", edit_project_path(@project), remote: true  %></li>
+                <li><%= link_to "Remove: '#{ @project.name }'", project_path(@project), method: :delete,
+                                            data: { confirm: "Are you sure you want to delete PROJECT: '#{@project.name}'?" } %></li>
+                <li><%= link_to "New Task", new_project_task_path(@project), remote: true  %></li>
+              <% elsif request[:controller] == 'projects' && request[:action] == 'update' %>
+                <li><%= link_to "Edit: '#{ @project.name }'", edit_project_path(@project), remote: true  %></li>
+                <li><%= link_to "Remove: '#{ @project.name }'", project_path(@project), method: :delete,
+                                            data: { confirm: "Are you sure you want to delete PROJECT: '#{@project.name}'?" } %></li>
+                <li><%= link_to "New Task", new_project_task_path(@project), remote: true  %></li>
+              <% elsif request[:controller] == 'tasks' && request[:action] == 'show' %>
+                <li><%= link_to "Current project", project_path(@project), remote: true  %></li>
+                <li><%= link_to "Edit: '#{ @task.name }'", edit_project_task_path(@project, @task), remote: true  %></li>
+                <li><%= link_to "Remove: '#{ @task.name }'", project_task_path(@project, @task), method: :delete,
+                                            data: { confirm: "Are you sure you want to delete TASK: '#{@task.name}'?" }, remote: true %></li>
+              <% elsif request[:controller] == 'tasks' && request[:action] == 'create' %>
+                <li><%= link_to "Edit: '#{ @project.name }'", edit_project_path(@project), remote: true  %></li>
+                <li><%= link_to "Remove: '#{ @project.name }'", project_path(@project), method: :delete,
+                                            data: { confirm: "Are you sure you want to delete PROJECT: '#{@project.name}'?" } %></li>
+                <li><%= link_to "New Task", new_project_task_path(@project), remote: true  %></li>
+              <% elsif request[:controller] == 'tasks' && request[:action] == 'update' %>
+                <li><%= link_to "Current project", project_path(@project), remote: true  %></li>
+                <li><%= link_to "Edit: '#{ @task.name }'", edit_project_task_path(@project, @task), remote: true  %></li>
+                <li><%= link_to "Remove: '#{ @task.name }'", project_task_path(@project, @task), method: :delete,
+                                            data: { confirm: "Are you sure you want to delete TASK: '#{@task.name}'?" }, remote: true %></li>
+              <% elsif request[:controller] == 'tasks' && request[:action] == 'destroy' %>
+                <li><%= link_to "Edit: '#{ @project.name }'", edit_project_path(@project), remote: true  %></li>
+                <li><%= link_to "Remove: '#{ @project.name }'", project_path(@project), method: :delete,
+                                            data: { confirm: "Are you sure you want to delete PROJECT: '#{@project.name}'?" } %></li>
                 <li><%= link_to "New Task", new_project_task_path(@project), remote: true  %></li>
               <% end %>
             <% end %>
@@ -30,9 +60,5 @@
         </div>
       </div><!--end of row-->
     </div><!--end of container-->
-    <div class="mobile-toggle">
-      <div class="bar-1"></div>
-      <div class="bar-2"></div>
-    </div>
   </nav>
 </div>

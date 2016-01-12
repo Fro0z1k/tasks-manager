@@ -1,0 +1,21 @@
+<div id="all">
+  <%= render 'common/header' %>
+  <div class="main-container">
+    <section class="contained-projects">
+      <div class="col-sm-8 col-sm-offset-2">
+        <h2><%= "#{ @task.name }" %></h2>
+        <% if @task.priority == 'low' %>
+          <div style="color:green">
+        <% elsif @task.priority == 'middle' %>
+          <div style="color:orange">
+        <% else %>
+          <div style="color:red">
+        <% end %>
+          <%= "#{ @task.priority } priority" %><br>
+        </div>
+        <ul style="color:#e74c3c"><%= "Deadline: #{ @task.deadline }" if @task.deadline.present? %></ul><br>
+        <span><%= "#{ @task.text }" %></span>
+      </div>
+    </section>
+  </div>
+</div>

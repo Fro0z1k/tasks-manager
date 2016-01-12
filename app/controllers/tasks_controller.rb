@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  respond_to :html, :xml
 
   def new
     @project = Project.find(params[:project_id])
@@ -18,6 +19,40 @@ class TasksController < ApplicationController
       flash[:error] = "What's wrong?"
       render :back
     end
+  end
+
+  def show
+    @project = Project.find(params[:project_id])
+    @task = Task.find(params[:id])
+  end
+
+  def edit
+    @project = Project.find(params[:project_id])
+    @task = Task.find(params[:id])
+    render 'new'
+  end
+
+  def update
+    @project = Project.find(params[:project_id])
+    @task = Task.find(params[:id])
+    if @task.update(task_params)
+      flash[:notice] = "Project successfully updated"
+      render 'show'
+    else
+      flash[:error] = "What's wrong?"
+      render :back
+    end
+  end
+
+  def destroy
+    @project = Project.find(params[:project_id])
+    @task = Task.find(params[:id])
+    @tasks_new = @project.tasks.task_new.order(priority: 'DESC')
+    @progress = @project.tasks.progress.order(priority: 'DESC')
+    @done = @project.tasks.done.order(priority: 'DESC')
+    @task.destroy
+    flash[:notice] = "#{ @task.name } is was removed!"
+    render 'projects/show'
   end
 
   private
