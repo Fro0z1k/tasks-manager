@@ -1,0 +1,35 @@
+<div id="all">
+  <%= render 'common/header' %>
+  <div class="main-container">
+    <section class="contained-projects">
+      <div class="col-sm-8 col-sm-offset-2">
+        <% if request[:action] == 'edit' %>
+          <h3 class='text-center'>Edit Task</h3>
+        <% else %>
+          <h3 class='text-center'>New Task</h3>
+        <% end %>
+        <%= form_for([@project, @task], remote: true) do |p| %>
+          <div class="form-md-line-input" id="sandbox-container">
+            <div class="form-group">
+              <%= p.text_field :name, class: "form-control", placeholder: "Enter task name", required: true %>
+              <%= p.text_area :text, class: "form-control", placeholder: "Enter task text", rows: '10', required: true %>
+              <%= p.label :priority %>
+              <%= p.select(:priority, options_for_select(['low', 'middle', 'warning']), {}, { class: "form-control", placeholder: "Select priority..." }) %>
+              <%= p.text_field :deadline, 'data-provide' => 'datepicker', class: "form-control", placeholder: 'Select deadline...' %>
+            </div>
+            <div class="col-sm-1 col-sm-offset-3 form-group">
+              <% if request[:action] == 'new' %>
+                <%= p.submit "Create", class: "btn btn-default", type: "submit" %>
+              <% else request[:action] == 'edit' %>
+                <%= p.submit "Update", class: "btn btn-default", type: "submit" %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+        <div class="col-sm-offset-3 text-center form-group">
+          <%= link_to "Cancel", @project, class: "btn btn-default", remote: true %>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

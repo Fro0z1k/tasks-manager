@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
     @project = current_user.projects.build(project_params)
     respond_to do |format|
       if @project.save
-        flash[:notice] = "Project successfully updated"
+        flash[:notice] = "Project successfully created"
         format.html { redirect_to dashboard_index_path }
         format.js   { render :show }
       else
@@ -21,7 +21,7 @@ class ProjectsController < ApplicationController
 
   def edit
     @project = Project.find(params[:id])
-    render 'new.js.erb'
+    render 'new'
   end
 
   def show

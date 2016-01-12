@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# Date Picker
+gem 'bootstrap-datepicker-rails'
+# Confirm
 gem 'data-confirm-modal', github: 'ifad/data-confirm-modal'
 # Device
 gem 'devise'

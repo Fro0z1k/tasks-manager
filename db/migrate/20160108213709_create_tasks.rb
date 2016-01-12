@@ -6,7 +6,7 @@ class CreateTasks < ActiveRecord::Migration
       t.integer :project_id
       t.integer :priority, default: 0
       t.string  :status, default: 'new'
-      t.date    :deadline
+      t.string  :deadline
 
       t.timestamps null: false
     end

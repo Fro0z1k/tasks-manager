@@ -13,10 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.plugin.min
+//= require bootstrap-datepicker
 //= require scripts
 //= require data-confirm-modal
 //= require flexslider.min
-//= require confirm
 //= require_tree
 
 
