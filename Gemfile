@@ -49,6 +49,7 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem "letter_opener"
+  gem 'rspec-rails'
 end
 
 group :development do
