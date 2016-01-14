@@ -4,9 +4,9 @@ class Task < ActiveRecord::Base
 
   validates :name, :text, presence: true
 
-  scope :task_new,    -> { where(status: 'new') }
-  scope :progress,    -> { where(status: 'progress') }
-  scope :done,        -> { where(status: 'done') }
+  scope :task_new, -> { where(status: 'new') }
+  scope :progress, -> { where(status: 'progress') }
+  scope :done,     -> { where(status: 'done') }
 
   enum priority: [ :low, :middle, :warning ]
 
