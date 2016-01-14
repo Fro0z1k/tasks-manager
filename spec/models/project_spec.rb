@@ -39,8 +39,8 @@ RSpec.describe Project, type: :model do
     let(:project){ create :project_faker }
 
     it 'should have a Tasks array' do
-      task_first = project.tasks.create(name: 'task_first', text: 'test')
-      task_second = project.tasks.create(name: 'task_second', text: 'test')
+      task_first = project.tasks.create(name: Faker::Name.title, text: Faker::Lorem.sentence(50))
+      task_second = project.tasks.create(name: Faker::Name.title, text: Faker::Lorem.sentence(50))
       expect(project.reload.tasks).to eq( [task_first, task_second] )
     end
   end
