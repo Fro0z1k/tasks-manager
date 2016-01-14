@@ -8,7 +8,6 @@ RSpec.describe Project, type: :model do
     it 'should be valid' do
       expect(project).to be_valid
     end
-
   end
 
   describe 'Validations' do
