@@ -6,7 +6,7 @@ Task.delete_all
 user = User.create email: 'jump2kill@gmail.com', password: 'password', password_confirmation: 'password'
 
 # Projects
-projects = (0..15).map { FactoryGirl.create(:project) }
+projects = (0..15).map { FactoryGirl.create(:project_faker) }
 
 projects.each do | project |
   project.owner = User.first.id
@@ -14,7 +14,7 @@ projects.each do | project |
 end
 
 # Tasks
-tasks = (0..200).map { FactoryGirl.create(:task) }
+tasks = (0..200).map { FactoryGirl.create(:task_faker) }
 
 status = ['new', 'progress', 'done']
 

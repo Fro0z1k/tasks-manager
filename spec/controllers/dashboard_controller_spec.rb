@@ -5,8 +5,7 @@ RSpec.describe DashboardController, type: :controller do
 
   describe 'access' do
     include Devise::TestHelpers
-
-    before { @user = User.create( email: 'email@email.com', password: 'password', password_confirmation: 'password' ) }
+    let(:user){ create :user }
 
     it "unauthenticated access" do
       get :index
@@ -14,11 +13,10 @@ RSpec.describe DashboardController, type: :controller do
     end
 
     it 'authenticated access' do
-      sign_in @user
+      sign_in user
       get :index
       expect(response).to have_http_status(200)
     end
-
   end
 
 end

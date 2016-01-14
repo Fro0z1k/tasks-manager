@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :dashboard, only: :index
-  resources :projects do
-    resources :tasks do
-      get 'get_task', on: :member
-      get 'done_task', on: :member
+  resources :projects, only: [:create, :new, :edit, :show, :update, :destroy] do
+    resources :tasks, only: [:create, :new, :edit, :show, :update, :destroy] do
+      member do
+        get 'get_task'
+        get 'done_task'
+      end
     end
   end
   root 'home#index'
